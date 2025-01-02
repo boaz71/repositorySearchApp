@@ -11,7 +11,8 @@ export class AuthService {
 
   private apiUrl ='';
 
-  constructor(private http: HttpClient,@Inject('API_BASE_URL') private apiBaseUrl: string) {
+  constructor(private http: HttpClient,
+    @Inject('API_BASE_URL') private apiBaseUrl: string) {
     this.apiUrl = this.apiBaseUrl+'Auth/';
   }
    

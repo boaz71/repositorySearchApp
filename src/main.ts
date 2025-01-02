@@ -1,3 +1,4 @@
+
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
@@ -6,16 +7,18 @@ import { AuthService } from './app/services/auth.service';
 import { RepositoriesService } from './app/services/repositories.service';
 import { BookmarksService } from './app/services/bookmarks.service';
 
+// ספקים נוספים כמו API_BASE_URL
+const providers = [
+  provideHttpClient(),
+  AuthService,
+  RepositoriesService,
+  BookmarksService,
+  { provide: 'API_BASE_URL', useValue: 'http://localhost:5208/api/' } 
+];
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
-
-  bootstrapApplication(AppComponent, {
-    providers: [
-      provideHttpClient(), // HttpClient
-      AuthService, 
-      RepositoriesService,
-      BookmarksService
-       
-    ],     
-  }).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    ...appConfig.providers,  // הספקים מ-appConfig
+    ...providers,  // הספקים הנוספים
+  ],
+}).catch((err) => console.error(err));
