@@ -1,3 +1,12 @@
+this should project run local at http://localhost:4200
+when you load your api you should change to the correct port in app.config.ts at line 16:
+{ provide: 'API_BASE_URL', useValue: 'http://localhost:5208/api/' }
+when you run the project login screen will be appear the user is :admin password:12345
+after succesful conections you should give repository name to search (angular for exm.)
+good luck :)
+
+
+
 # RepositorySearchApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
